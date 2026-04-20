@@ -1,0 +1,115 @@
+/* ============================================
+   CSS Custom Properties (Değişkenler)
+   Renk ve ölçüleri tek yerden yönetmek için
+   ============================================ */
+:root {
+    --color-primary: #2563eb;        /* Mavi — başlıklar, vurgular */
+    --color-bg: #f3f4f6;             /* Sayfa arka planı — açık gri */
+    --color-card: #ffffff;           /* Kart arka planı — beyaz */
+    --color-text: #1f2937;           /* Ana metin — koyu gri */
+    --color-text-muted: #6b7280;     /* İkincil metin — orta gri */
+    --color-accent: #10b981;         /* Yeşil — öğrenci sayısı vurgusu */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --radius: 12px;
+    --spacing: 1.5rem;
+}
+
+/* ============================================
+   Reset & Base
+   ============================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+}
+
+/* ============================================
+   Konteyner — içeriği ortalar, max genişlik
+   ============================================ */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   Sayfa başlığı
+   ============================================ */
+h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* ============================================
+   Kurs kartları
+   ============================================ */
+.kurs-karte {
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+    padding: var(--spacing);
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kurs-karte:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.kurs-karte h2 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--color-bg);
+}
+
+.kurs-karte p {
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.kurs-karte p strong {
+    color: var(--color-text);
+    font-weight: 500;
+    display: inline-block;
+    min-width: 120px;
+}
+
+/* Öğrenci sayısı — özel vurgu */
+.kurs-karte .studenten-zahl {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-left: 0.5rem;
+}
+
+/* ============================================
+   Boş durum
+   ============================================ */
+.empty-state {
+    text-align: center;
+    color: var(--color-text-muted);
+    padding: 3rem;
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+}

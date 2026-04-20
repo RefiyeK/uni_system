@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kurs Liste</title>
+    <link rel="stylesheet" href="{% static 'uni_app/kurs_list.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1> Kurs Liste</h1>
+
+        {% for kurs in kurse %}
+            <article class="kurs-karte">
+                <h2>{{ kurs.titel }}</h2>
+                <p><strong>Professor:</strong> {{ kurs.professor.name }}</p>
+                <p><strong>Semester:</strong> {{ kurs.semester.bezeichnung }}</p>
+                <p>
+                    <strong>Studenten:</strong>
+                    <span class="studenten-zahl">{{ kurs.studenten.count }}</span>
+                </p>
+            </article>
+        {% empty %}
+            <div class="empty-state">
+                <p>Henüz kurs bulunmuyor.</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
