@@ -14,7 +14,7 @@ class StudentAusweis(models.Model):
 
 class Student(models.Model):
    name = models.CharField(max_length=100)
-   ausweis = models.OneToOneField(StudentAusweis, on_delete=models.CASCADE)
+   ausweis = models.OneToOneField(StudentAusweis, on_delete=models.PROTECT)
    matrikel_nummer = models.CharField(max_length=20, unique=True)
 
    def __str__(self):
@@ -38,6 +38,7 @@ class Semester(models.Model):
 
 class Kursbeschreibung(models.Model):
     beschreibung = models.TextField()
+    kurs = models.OneToOneField('Kurs', on_delete=models.CASCADE, )
 
     def __str__(self):
         return self.beschreibung[:50] # Zeigt die ersten 50 Zeichen der Kursbeschreibung an
@@ -45,9 +46,8 @@ class Kursbeschreibung(models.Model):
 
 class Kurs(models.Model):
     titel = models.CharField(max_length=200)
-    professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
-    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
-    kursbeschreibung = models.OneToOneField(Kursbeschreibung, on_delete=models.CASCADE)
+    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL, null=True, blank=True, related_name='kurse')
+    semester = models.ForeignKey(Semester, on_delete=models.SET_NULL, null=True, blank=True)
     studenten = models.ManyToManyField(Student)
 
     def __str__(self):
