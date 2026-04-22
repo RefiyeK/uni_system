@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professor Liste</title>
+    <link rel="stylesheet" href="{% static 'uni_app/professor_list.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1> Unsere Professoren </h1>
+
+        {% for prof in professoren %}
+            <article >
+                <h2>{{ prof.name }}</h2>
+                <p><strong>Fachgebiet:</strong> {{ prof.fachgebiet }}</p>              
+                <p><strong>Anzahl Kurse: </strong>{{ prof.kurs_set.count }}</p>
+            </article>
+        {% endfor %}
+    </div>
+</body>
+</html>
